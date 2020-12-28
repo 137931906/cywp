@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--<配置打印SQL到控制台以及懒加载>-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--<打开延迟加载的全局开关>-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <typeAliases><!-- 在mybatis-config.xml配置中使用别名，方便省去输入全路径 -->
+        <typeAlias type="com.cykj.bean.User" alias="User"/>
+        <typeAlias type="com.cykj.bean.AdminUser" alias="AdminUser"/>
+    </typeAliases>
+
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/AdminUserMapper.xml"/>
+    </mappers>
+
+</configuration>

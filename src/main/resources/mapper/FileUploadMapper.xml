@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.cykj.mapper.FileUploadMapper">
+    <insert id="insertTable" parameterType="FileUpload" keyProperty="id" useGeneratedKeys="true" >
+        insert into fileupload(FileName,LoadScore,FileType,CheckState,Uploadid,titleName,content)values
+        (#{fileName},#{loadScore},#{fileType},#{checkState},#{uploadId},#{titleName},#{content})
+    </insert>
+</mapper>

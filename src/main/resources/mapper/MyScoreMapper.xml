@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.cykj.mapper.MyScoreMapper">
+    <select id="selectTabe" parameterType="User" resultMap="ManyOne">
+        select * from userscore u left join user u2 on u2.id=u.userid
+        <where>
+            userid=#{id}
+        </where>
+        order by u.opentime desc
+    </select>
+    <resultMap id="ManyOne" type="UserScore">
+        <id column="id" property="id"></id>
+        <result column="SocerCount" property="SocerCount"></result>
+        <result column="OpenTime" property="OpenTime"></result>
+        <result  column="ChangeScore" property="ChangeScore"></result>
+        <result column="SurplusScore" property="SurplusScore"></result>
+        <association property="user"  javaType="User">
+            <result column="name" property="name"></result>
+        </association>
+    </resultMap>
+<!--    //查询表格数量-->
+    <select id="selectCount" parameterType="User" resultType="Int">
+        select count(*) from userscore
+        <where>
+            userid=#{id}
+        </where>
+    </select>
+</mapper>
